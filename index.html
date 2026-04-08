@@ -5,18 +5,91 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Happy Birthday!</title>
     
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>Happy Birthday, MEME!</h1>
-    <p>Wishing you a day filled with joy, laughter, and all your favorite things. This website is my little gift to you – enjoy exploring!</p>
-    
-    <div class="gift">
-        <p>🎉 🎂 🎈</p>
-        <a href="surprise.html" class="action-button">Click here for a surprise!</a>
-    </div>
-    
 
-    <script src="script.js"></script>
+    <audio id="background-music" loop>
+        <source src="song.mp3" type="audio/mpeg">
+    </audio>
+
+    <div id="home-page" class="page-section">
+        <h1>Happy Birthday, MEME!</h1>
+        <p>Wishing you a day filled with joy, laughter, and all your favorite things. This website is my little gift to you – enjoy exploring!</p>
+        
+        <div class="gift">
+            <p>🎉 🎂 🎈</p>
+            <button class="action-button" onclick="goToPage('surprise-page')">Click here for a surprise!</button>
+        </div>
+    </div>
+
+    <div id="surprise-page" class="page-section hidden">
+        <div class="message-box">
+            <h2>A Special Message For You</h2>
+            <p>Happy birthday my dearest sister, and I hope a great life side by side always together, you are my friend my sister and my world. Honestly if I kept talking from now until the day I pass I wouldn't be able to describe how I do love you and how you really mean to me, I wish you always be with me and your presence is always a blessing in my life. I hope you achieve everything you want in life and I hope to see you the most successful person in the world. Always you are me not you and me🫂❣️❣️❣️❣️❣️❣️</p>
+        </div>
+        <button class="action-button" onclick="goToPage('gallery-page')">Welcome to our storytime</button>
+        <button class="action-button secondary" onclick="goToPage('home-page')">Back to Home</button>
+    </div>
+
+    <div id="gallery-page" class="page-section hidden">
+        <h1>Some Favorite Memories</h1>
+        <div class="gallery-container">
+            <div class="photo-card">
+                <img src="img1.jpeg" alt="First memory">
+                <p>thank you for making me feel special on my birthday!, the best person to make me happy.</p>
+            </div>
+            <div class="photo-card">
+                <img src="img2.jpeg" alt="Second memory">
+                <p>2021—2026 
+F♾️rever</p>
+            </div>
+            <div class="photo-card">
+                <img src="img3.jpeg" alt="Third memory">
+                <p>I love trying new things with you for the first time!</p>
+            </div>
+        </div>
+        <p style="margin-top: 30px; font-weight: bold; color: #6F826F;">
+            Until we are 100 years old together, Happy Birthday again! 💖
+        </p>
+        <button class="action-button" onclick="goToPage('surprise-page')">Go Back</button>
+    </div>
+
+    <script>
+        const music = document.getElementById("background-music");
+        let isMusicPlaying = false;
+
+        function goToPage(pageId) {
+            
+            // 1. Try to play the music safely
+            if (!isMusicPlaying && music) {
+                let playPromise = music.play();
+                
+                // This 'catch' prevents the buttons from breaking if the song is missing!
+                if (playPromise !== undefined) {
+                    playPromise.catch(error => {
+                        console.log("Music could not play, but buttons will still work.");
+                    });
+                }
+                isMusicPlaying = true;
+            }
+
+            // 2. Hide ALL pages
+            const allPages = document.querySelectorAll('.page-section');
+            allPages.forEach(page => {
+                page.classList.add('hidden');
+            });
+
+            // 3. Show ONLY the specific page we requested
+            const pageToShow = document.getElementById(pageId);
+            if (pageToShow) {
+                pageToShow.classList.remove('hidden');
+            }
+        }
+    </script>
 </body>
 </html>
