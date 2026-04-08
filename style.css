@@ -1,48 +1,46 @@
-/* 1. This ensures padding never breaks your flexible sizes */
-* {
-    box-sizing: border-box;
-}
-
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Poppins', sans-serif; /* THIS IS THE NEW FONT! */
     text-align: center;
-    background-color: #e6e6fa; /* Lavender background */
     color: #333;
-    padding: 5vw; /* Changed to a flexible padding */
+    padding: 5vw; 
     min-height: 100vh;
-    /* This flex setup keeps your bottom links perfectly at the bottom */
     display: flex;
     flex-direction: column;
     align-items: center; 
+    
+    background-image: url('cake-bg.png'); 
+    background-size: cover; 
+    background-position: center; 
+    background-attachment: fixed; 
+    background-color: #e6e6fa; 
+}
+
+h1, h2 {
+    font-family: 'Pacifico', cursive; /* Gives your titles that fun, handwritten look */
+    color: #ff69b4;
 }
 
 h1 {
-    color: #ff69b4;
-    /* This makes the font shrink gracefully on small screens */
-    font-size: clamp(2em, 6vw, 3em); 
+    font-size: clamp(2.5em, 8vw, 4em); /* I made the font size slightly larger since script fonts run small */
     margin-top: 10px;
+    text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.8); /* Adds a subtle white glow so it's readable over the cake background! */
 }
 
 p {
-    /* Flexible paragraph text */
-    font-size: clamp(1.1em, 4vw, 1.5em);
-    max-width: 800px; /* Keeps lines from getting too long to read */
-    margin: 15px auto;
+    font-size: 1.5em;
 }
 
 .gift {
     margin-top: 30px;
-    margin-bottom: 40px;
 }
 
-/* 2. Fixed Bottom Links to flow naturally on phones */
 .bottom-links {
-    margin-top: auto; /* Pushes them to the very bottom */
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
     display: flex;
-    justify-content: center;
-    flex-wrap: wrap; /* Lets them stack on top of each other if the screen is tiny */
     gap: 20px;
-    padding-bottom: 20px;
 }
 
 .bottom-links a {
@@ -51,11 +49,10 @@ p {
 
 .bottom-links img {
     width: 100px; 
-    max-width: 100%;
     height: auto;
 }
 
-/* Quick button style */
+/* Added a quick button style for your JS surprise! */
 button {
     padding: 10px 20px;
     font-size: 1.2em;
@@ -65,73 +62,85 @@ button {
     border-radius: 5px;
     cursor: pointer;
 }
+/* --- NEW STYLES FOR THE SURPRISE PAGE --- */
 
-/* --- STYLES FOR THE SURPRISE PAGE --- */
-
+/* The Beautiful Message Box */
 .message-box {
-    background-color: white; 
-    border-radius: 15px; 
-    padding: 30px; 
-    width: 90%; /* On phones, it takes up 90% of the screen */
-    max-width: 500px; /* On computers, it stops growing at 500px */
-    margin: 50px auto; 
-    box-shadow: 0 10px 20px rgba(0,0,0,0.1); 
-    border: 3px solid #ff69b4; 
+    background-color: white; /* White background makes it pop against the lavender */
+    border-radius: 15px; /* Rounds the corners */
+    padding: 30px; /* Gives the text room to breathe */
+    max-width: 500px; /* Stops the box from getting too wide */
+    margin: 50px auto; /* Centers the box perfectly on the page */
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1); /* Adds a soft drop-shadow for a floating effect */
+    border: 3px solid #ff69b4; /* A pink border to match your headings */
 }
 
+/* Make our links look like beautiful buttons */
 .action-button {
     display: inline-block;
     padding: 12px 25px;
     font-size: 1.2em;
     background-color: #ff69b4;
     color: white;
-    text-decoration: none; 
+    text-decoration: none; /* Removes the default blue underline from links */
     border-radius: 8px;
     margin-top: 20px;
-    transition: background-color 0.3s ease; 
+    transition: background-color 0.3s ease; /* Makes the hover effect smooth */
 }
 
+/* Changes the color slightly when the mouse hovers over it */
 .action-button:hover {
     background-color: #ff1493; 
 }
+/* --- NEW STYLES FOR THE GALLERY PAGE --- */
 
-/* --- STYLES FOR THE GALLERY PAGE --- */
-
+/* This puts the photo cards side-by-side and centers them */
 .gallery-container {
     display: flex;
     justify-content: center;
     align-items: flex-start;
-    gap: 30px; 
-    flex-wrap: wrap; /* This is what pushes photos to the next row on mobile! */
+    gap: 30px; /* Space between the photos */
+    flex-wrap: wrap; /* Allows them to stack on smaller screens like phones */
     margin-top: 40px;
     margin-bottom: 40px;
-    width: 100%;
 }
 
+/* This styles the individual box holding the image and text */
 .photo-card {
     background-color: lavender;
     padding: 15px;
     border-radius: 10px;
     border: 3px solid rgb(210, 210, 250);
-    box-shadow: 0 8px 15px rgba(0,0,0,0.1):
-    
-    /* Makes the cards flexible */
-    width: 100%;
-    max-width: 300px; 
+    box-shadow: 0 8px 15px rgba(0,0,0,0.1);
+    width: 300px; /* Forces all cards to be the same width */
     text-align: center;
 }
 
-/* 3. The Image Fix */
+/* This makes sure the images fit perfectly inside their cards */
 .photo-card img {
-    width: 100%; /* Forces the image to touch the edges of the box */
-    height: 350px; /* Locks the height so all boxes are perfectly uniform */
-    object-fit: cover; /* Crops the image beautifully without stretching faces */
+    max-width: 100%; /* Prevents the image from overflowing the box */
+    height: 100%; /* You can change this to make the images taller or shorter */
+    object-fit: cover; /* Ensures the image fills the space without squishing */
     border-radius: 5px;
 }
 
+/* This styles the text right beneath the image */
 .photo-card p {
     font-size: 1.1em;
     color: #555;
     margin-top: 15px;
     margin-bottom: 5px;
+}
+/* --- MAGIC HIDING CLASS --- */
+.hidden {
+    display: none !important;
+}
+
+/* Optional: Make the secondary button look a little different */
+.action-button.secondary {
+    background-color: #baa2ff;
+    margin-left: 10px;
+}
+.action-button.secondary:hover {
+    background-color: #9c7cf6;
 }
