@@ -95,41 +95,50 @@ button {
 /* --- NEW STYLES FOR THE GALLERY PAGE --- */
 
 /* This puts the photo cards side-by-side and centers them */
+/* --- UPGRADED STYLES FOR THE GALLERY PAGE --- */
+
 .gallery-container {
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-    gap: 30px; /* Space between the photos */
-    flex-wrap: wrap; /* Allows them to stack on smaller screens like phones */
-    margin-top: 40px;
-    margin-bottom: 40px;
+    /* 1. CSS Grid automatically figures out how many columns fit on the screen! */
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px; 
+    
+    /* 2. Keeps the whole gallery centered and prevents it from getting too wide on huge monitors */
+    width: 100%;
+    max-width: 1100px; 
+    margin: 40px auto;
 }
 
-/* This styles the individual box holding the image and text */
 .photo-card {
-    background-color: lavender;
+    /* Slightly lighter lavender so it pops nicely against the background */
+    background-color: #f8f4ff; 
     padding: 15px;
     border-radius: 10px;
-    border: 3px solid rgb(210, 210, 250);
     box-shadow: 0 8px 15px rgba(0,0,0,0.1);
-    width: 300px; /* Forces all cards to be the same width */
-    text-align: center;
+    border: 2px solid white;
+    
+    /* Makes sure the text stays centered under the image */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
-/* This makes sure the images fit perfectly inside their cards */
 .photo-card img {
-    max-width: 100%; /* Prevents the image from overflowing the box */
-    height: 100%; /* You can change this to make the images taller or shorter */
-    object-fit: cover; /* Ensures the image fills the space without squishing */
+    width: 100%; /* Stretches to fill the card */
+    
+    /* 3. THE MAGIC TRICK: This locks the photo into a perfect portrait shape no matter the screen size! */
+    aspect-ratio: 3 / 4; 
+    
+    object-fit: cover; /* Crops beautifully without stretching faces */
     border-radius: 5px;
 }
 
-/* This styles the text right beneath the image */
 .photo-card p {
     font-size: 1.1em;
     color: #555;
     margin-top: 15px;
     margin-bottom: 5px;
+    line-height: 1.4; /* Adds a little breathing room between lines of text */
 }
 /* --- MAGIC HIDING CLASS --- */
 .hidden {
