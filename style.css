@@ -1,0 +1,120 @@
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    background-color: #e6e6fa; /* Lavender background */
+    color: #333;
+    padding: 50px;
+    position: relative;
+    min-height: 100vh;
+}
+
+h1 {
+    color: #ff69b4;
+    font-size: 3em;
+}
+
+p {
+    font-size: 1.5em;
+}
+
+.gift {
+    margin-top: 30px;
+}
+
+.bottom-links {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 20px;
+}
+
+.bottom-links a {
+    display: inline-block;
+}
+
+.bottom-links img {
+    width: 100px; 
+    height: auto;
+}
+
+/* Added a quick button style for your JS surprise! */
+button {
+    padding: 10px 20px;
+    font-size: 1.2em;
+    background-color: #ff69b4;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+/* --- NEW STYLES FOR THE SURPRISE PAGE --- */
+
+/* The Beautiful Message Box */
+.message-box {
+    background-color: white; /* White background makes it pop against the lavender */
+    border-radius: 15px; /* Rounds the corners */
+    padding: 30px; /* Gives the text room to breathe */
+    max-width: 500px; /* Stops the box from getting too wide */
+    margin: 50px auto; /* Centers the box perfectly on the page */
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1); /* Adds a soft drop-shadow for a floating effect */
+    border: 3px solid #ff69b4; /* A pink border to match your headings */
+}
+
+/* Make our links look like beautiful buttons */
+.action-button {
+    display: inline-block;
+    padding: 12px 25px;
+    font-size: 1.2em;
+    background-color: #ff69b4;
+    color: white;
+    text-decoration: none; /* Removes the default blue underline from links */
+    border-radius: 8px;
+    margin-top: 20px;
+    transition: background-color 0.3s ease; /* Makes the hover effect smooth */
+}
+
+/* Changes the color slightly when the mouse hovers over it */
+.action-button:hover {
+    background-color: #ff1493; 
+}
+/* --- NEW STYLES FOR THE GALLERY PAGE --- */
+
+/* This puts the photo cards side-by-side and centers them */
+.gallery-container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 30px; /* Space between the photos */
+    flex-wrap: wrap; /* Allows them to stack on smaller screens like phones */
+    margin-top: 40px;
+    margin-bottom: 40px;
+}
+
+/* This styles the individual box holding the image and text */
+.photo-card {
+    background-color: lavender;
+    padding: 15px;
+    border-radius: 10px;
+    border: 3px solid rgb(210, 210, 250);
+    box-shadow: 0 8px 15px rgba(0,0,0,0.1);
+    width: 300px; /* Forces all cards to be the same width */
+    text-align: center;
+}
+
+/* This makes sure the images fit perfectly inside their cards */
+.photo-card img {
+    max-width: 100%; /* Prevents the image from overflowing the box */
+    height: 100%; /* You can change this to make the images taller or shorter */
+    object-fit: cover; /* Ensures the image fills the space without squishing */
+    border-radius: 5px;
+}
+
+/* This styles the text right beneath the image */
+.photo-card p {
+    font-size: 1.1em;
+    color: #555;
+    margin-top: 15px;
+    margin-bottom: 5px;
+}
