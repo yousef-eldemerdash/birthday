@@ -1,33 +1,48 @@
+/* 1. This ensures padding never breaks your flexible sizes */
+* {
+    box-sizing: border-box;
+}
+
 body {
     font-family: Arial, sans-serif;
     text-align: center;
     background-color: #e6e6fa; /* Lavender background */
     color: #333;
-    padding: 50px;
-    position: relative;
+    padding: 5vw; /* Changed to a flexible padding */
     min-height: 100vh;
+    /* This flex setup keeps your bottom links perfectly at the bottom */
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
 }
 
 h1 {
     color: #ff69b4;
-    font-size: 3em;
+    /* This makes the font shrink gracefully on small screens */
+    font-size: clamp(2em, 6vw, 3em); 
+    margin-top: 10px;
 }
 
 p {
-    font-size: 1.5em;
+    /* Flexible paragraph text */
+    font-size: clamp(1.1em, 4vw, 1.5em);
+    max-width: 800px; /* Keeps lines from getting too long to read */
+    margin: 15px auto;
 }
 
 .gift {
     margin-top: 30px;
+    margin-bottom: 40px;
 }
 
+/* 2. Fixed Bottom Links to flow naturally on phones */
 .bottom-links {
-    position: absolute;
-    bottom: 20px;
-    left: 50%;
-    transform: translateX(-50%);
+    margin-top: auto; /* Pushes them to the very bottom */
     display: flex;
+    justify-content: center;
+    flex-wrap: wrap; /* Lets them stack on top of each other if the screen is tiny */
     gap: 20px;
+    padding-bottom: 20px;
 }
 
 .bottom-links a {
@@ -36,10 +51,11 @@ p {
 
 .bottom-links img {
     width: 100px; 
+    max-width: 100%;
     height: auto;
 }
 
-/* Added a quick button style for your JS surprise! */
+/* Quick button style */
 button {
     padding: 10px 20px;
     font-size: 1.2em;
@@ -49,69 +65,70 @@ button {
     border-radius: 5px;
     cursor: pointer;
 }
-/* --- NEW STYLES FOR THE SURPRISE PAGE --- */
 
-/* The Beautiful Message Box */
+/* --- STYLES FOR THE SURPRISE PAGE --- */
+
 .message-box {
-    background-color: white; /* White background makes it pop against the lavender */
-    border-radius: 15px; /* Rounds the corners */
-    padding: 30px; /* Gives the text room to breathe */
-    max-width: 500px; /* Stops the box from getting too wide */
-    margin: 50px auto; /* Centers the box perfectly on the page */
-    box-shadow: 0 10px 20px rgba(0,0,0,0.1); /* Adds a soft drop-shadow for a floating effect */
-    border: 3px solid #ff69b4; /* A pink border to match your headings */
+    background-color: white; 
+    border-radius: 15px; 
+    padding: 30px; 
+    width: 90%; /* On phones, it takes up 90% of the screen */
+    max-width: 500px; /* On computers, it stops growing at 500px */
+    margin: 50px auto; 
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1); 
+    border: 3px solid #ff69b4; 
 }
 
-/* Make our links look like beautiful buttons */
 .action-button {
     display: inline-block;
     padding: 12px 25px;
     font-size: 1.2em;
     background-color: #ff69b4;
     color: white;
-    text-decoration: none; /* Removes the default blue underline from links */
+    text-decoration: none; 
     border-radius: 8px;
     margin-top: 20px;
-    transition: background-color 0.3s ease; /* Makes the hover effect smooth */
+    transition: background-color 0.3s ease; 
 }
 
-/* Changes the color slightly when the mouse hovers over it */
 .action-button:hover {
     background-color: #ff1493; 
 }
-/* --- NEW STYLES FOR THE GALLERY PAGE --- */
 
-/* This puts the photo cards side-by-side and centers them */
+/* --- STYLES FOR THE GALLERY PAGE --- */
+
 .gallery-container {
     display: flex;
     justify-content: center;
     align-items: flex-start;
-    gap: 30px; /* Space between the photos */
-    flex-wrap: wrap; /* Allows them to stack on smaller screens like phones */
+    gap: 30px; 
+    flex-wrap: wrap; /* This is what pushes photos to the next row on mobile! */
     margin-top: 40px;
     margin-bottom: 40px;
+    width: 100%;
 }
 
-/* This styles the individual box holding the image and text */
 .photo-card {
-    background-color: blue;
+    background-color: lavender;
     padding: 15px;
     border-radius: 10px;
     border: 3px solid rgb(210, 210, 250);
     box-shadow: 0 8px 15px rgba(0,0,0,0.1);
-    width: 300px; /* Forces all cards to be the same width */
+    
+    /* Makes the cards flexible */
+    width: 100%;
+    max-width: 300px; 
     text-align: center;
 }
 
-/* This makes sure the images fit perfectly inside their cards */
+/* 3. The Image Fix */
 .photo-card img {
-    max-width: 100%; /* Prevents the image from overflowing the box */
-    height: 100%; /* You can change this to make the images taller or shorter */
-    object-fit: cover; /* Ensures the image fills the space without squishing */
+    width: 100%; /* Forces the image to touch the edges of the box */
+    height: 350px; /* Locks the height so all boxes are perfectly uniform */
+    object-fit: cover; /* Crops the image beautifully without stretching faces */
     border-radius: 5px;
 }
 
-/* This styles the text right beneath the image */
 .photo-card p {
     font-size: 1.1em;
     color: #555;
